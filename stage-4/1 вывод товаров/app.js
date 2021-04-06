@@ -75,6 +75,13 @@ const products = {
     ],
 };
 
+const buttons = document.querySelectorAll('button');
+let productsBlock = document.querySelector('.products');
+
+buttons.forEach(elem => {
+    elem.addEventListener('click', clickHandler);
+});
+
 
 /**
  * Эта функция должна вызываться при клике по кнопкам.
@@ -85,7 +92,8 @@ function clickHandler(event) {
     
     //в showCategory надо передать строку с типом категории, тип берите
     //из атрибута data-type у кнопки, по которой кликнули.
-    
+    productsBlock.innerHTML = '';
+    showCategory(event.target.dataset.type);
 }
 
 /**
@@ -96,7 +104,7 @@ function clickHandler(event) {
  * по которой кликнули.
  */
 function showCategory(category) {
-    
+    productsBlock.insertAdjacentHTML('afterbegin', getProductMarkup(products[category]));
 }
 
 /**
@@ -109,5 +117,17 @@ function showCategory(category) {
  * в верху этого файла.
  */
 function getProductMarkup(product) {
+    let cardHTML = '';
+    product.forEach(elem => {
+        cardHTML += `
+        <div class="product">
+            <div>${elem.name}</div>
+            <img src="${elem.imageUrl}" alt="">
+            <div>${elem.price}</div>
+            <a href="https://example.com/producs/${elem.id}">Подробнее</a>
+        </div>
+        `;
+    });
 
+    return cardHTML;
 }

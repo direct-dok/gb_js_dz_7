@@ -19,6 +19,18 @@
         ниже:
         <img src="https://picsum.photos/200/300?random=${счетчик_цикла_здесь}" alt="pic${счетчик_цикла_здесь}">
         */
+      
+
+
+        let noteIMG = '';
+        
+        for(let i = 1; i <= 6; i++) {
+            noteIMG += `<img src="https://picsum.photos/200/300?random=${i}" alt="pic${i}">`;
+        }
+
+        document.body.insertAdjacentHTML('afterbegin', noteIMG);
+
+
        
     </script>
 </body>

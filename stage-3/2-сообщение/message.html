@@ -26,7 +26,19 @@
     -->
 
     <script>
-        
+        let button = document.querySelector('button'), 
+            audioElement = new Audio('notification.mp3'), 
+            message = document.querySelector('.message');
+
+        button.addEventListener('click', (e) => {
+            audioElement.play();
+            console.log(message.clientHeight);
+            let padding = +window.getComputedStyle(message, null).getPropertyValue('padding').replace(/px/, '') * 2;
+            message.style.transform = `translateY(-${message.clientHeight + padding}px)`;
+            setTimeout(() => {
+                message.style.transform = `translateY(0px)`;
+            }, 2000);
+        });
     </script>
 </body>
 

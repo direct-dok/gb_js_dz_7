@@ -6,7 +6,7 @@
     <title>Document</title>
 </head>
 <body>
-    <input type="range" min="20" max="100">
+    <input type="range" min="20" max="100" value="20">
     <div>
         Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quaerat, expedita.
     </div>
@@ -22,7 +22,19 @@
     
 
     <script>
-        
+        let inputSlider = document.querySelector('input'), 
+            div = document.querySelector('div');
+
+        window.addEventListener('load', (e) => {
+            div.style.fontSize = `${inputSlider.value}px`;
+
+        })
+
+        inputSlider.addEventListener('input', (e) => {
+            div.style.fontSize = `${e.target.value}px`;
+        });
+
+
     </script>
 </body>
 </html>
